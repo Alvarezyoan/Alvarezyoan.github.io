@@ -7,14 +7,66 @@ h1, h3 {
     margin: 10px 0;
 }
 
+h1 {
+    font-size: 36px;
+    color: #ec0505;
+}
+h3 {
+    font-size: 24px;
+    color: #1303fa;
+}
+
 a {
     display: inline-block;
     margin-top: 20px;
     text-decoration: none;
-    color: #0077cc;
+    color: #031cfd;
     font-weight: bold;
 }
 
 a:hover {
-    color: #005fa3
+    color: #0400ff
+}
+
+body {
+    background-image: url('fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Fondo desenfocado */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('fondo.jpg'); /* Reemplaza con tu imagen */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    z-index: -2;
+}
+
+/* Capa semitransparente para atenuar */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* Ajusta opacidad según lo que desees */
+    z-index: -1;
 }
