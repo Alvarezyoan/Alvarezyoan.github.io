@@ -1,45 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuento Infantil</title>
-    <link rel="stylesheet" href="decor.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuento Infantil</title>
+  <link rel="stylesheet" href="decor.css" />
 </head>
 <body>
 
-    <h1>Caperucita Roja</h1>
-    <h3>Cuento Infantil</h3>
+  <h1>Caperucita Roja</h1>
+  <h3>Cuento Infantil</h3>
 
-    <iframe src="https://scratch.mit.edu/projects/1223904938/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+  <div class="contenedor">
+    <!-- Sección Scratch -->
+    <div class="scratch" id="scratch-container">
+      <iframe id="scratch-iframe"
+              src="https://scratch.mit.edu/projects/1223904938/embed"
+              allowtransparency="true"
+              frameborder="0"
+              scrolling="no"
+              allowfullscreen></iframe>
+      <button id="fullscreen-btn">Pantalla completa</button>
+      <p><a href="https://forms.gle/uWnvk8PtdAFfZy5R9" target="_blank">Haz clic aquí para realizar la Evaluación</a></p>
+    </div>
 
-    <p><a href="https://forms.gle/uWnvk8PtdAFfZy5R9" target="_blank">Haz clic aquí para realizar la Evaluación</a></p>
+    <!-- Sección texto -->
+    <div class="texto">
+      <h3>Descripción:</h3>
+      <p>Este cuento interactivo de Caperucita Roja, narra la clásica historia de la niña con capa roja que visita a su abuela enferma, enfrentándose al lobo astuto en el bosque. Con personajes y diálogos animados, el proyecto invita a los niños a disfrutar y aprender mientras se sumergen en una narrativa sencilla y educativa.</p>
 
-    <h3>Descripción:</h3>
-    <p>
-        Este cuento interactivo de Caperucita Roja narra la clásica historia de la niña con capa roja que visita a su abuela enferma, enfrentándose al lobo astuto en el bosque. Con personajes y diálogos animados, el proyecto invita a los niños a disfrutar y aprender mientras se sumergen en una narrativa sencilla y educativa.
-    </p>
+      <h3>Instrucciones:</h3>
+      <p>Presiona la bandera verde para iniciar o reiniciar.<br>
+         Presiona el botón rojo para detener.<br>
+        Al hacer clic en el botón Pantalla grande y luego en Reproducir, podrás ver el contenido en modo de pantalla completa.<br>
+        Para salir de la pantalla completa, presiona dos veces la tecla ESC.<br>
+        Si deseas volver a la pantalla completa, haz clic nuevamente en el botón completa y luego en el ícono de las cuatro flechas ubicado en la esquina superior derecha.</p>
 
-    <h3>Notas y Créditos:</h3>
-    <p>
-        Autor: Yoan Alvarez<br><br>
+      <ul>
+        <h4>Autor:</h4>
+        <li>Yoan Alvarez</li>
+        <h4>Dobles de Voz</h4>
+        <li><strong>Narrador:</strong> Santiago Alvarez</li>
+        <li><strong>Caperucita Roja:</strong> Samantha Alvarez</li>
+        <li><strong>Mamá de Caperucita:</strong> Glorimar Rivas</li>
+        <li><strong>Abuela:</strong> Glorimar Rivas</li>
+        <li><strong>Lobo:</strong> Yoan Alvarez</li>
+        <li><strong>Cazador:</strong> Yoan Alvarez</li>
+        <h4>Sonidos</h4>
+        <li><strong>Música de Fondo:</strong>Creditos a quien corresponda</li>
+        <h4>Personajes y Escenarios creados por:</h4>
+        <li>Manus.ia, ChatGPT, Gemini.ia, Prepexity.ia</li>
+      </ul>
+    </div>
+  </div>
 
-        Dobles de Voz:<br>
-        Narrador - Santiago Alvarez<br>
-        Caperucita Roja - Samantha Alvarez<br>
-        Mamá de Caperucita - Glorimar Rivas<br>
-        Abuela de Caperucita - Glorimar Rivas<br>
-        Lobo - Yoan Alvarez<br>
-        Cazador - Yoan Alvarez<br><br>
+  <!-- Script para pantalla completa -->
+  <script>
+    const iframe = document.getElementById("scratch-iframe");
+    const contenedor = document.getElementById("scratch-container");
+    const boton = document.getElementById("fullscreen-btn");
 
-        Sonidos: Créditos a quien corresponda<br><br>
+    function activarPantallaCompleta() {
+      iframe.classList.add("fullscreen-iframe");
 
-        Personajes y Escenarios:<br>
-        Manus.ia, ChatGPT, Gemini.ia, Prepexity.ia
-    </p>
+      if (contenedor.requestFullscreen) {
+        contenedor.requestFullscreen();
+      } else if (contenedor.webkitRequestFullscreen) {
+        contenedor.webkitRequestFullscreen();
+      } else if (contenedor.mozRequestFullScreen) {
+        contenedor.mozRequestFullScreen();
+      } else if (contenedor.msRequestFullscreen) {
+        contenedor.msRequestFullscreen();
+      }
+    }
+
+    function restaurarIframe() {
+      iframe.classList.remove("fullscreen-iframe");
+    }
+
+    boton.addEventListener("click", activarPantallaCompleta);
+
+    ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "msfullscreenchange"].forEach(event => {
+      document.addEventListener(event, () => {
+        if (
+          !document.fullscreenElement &&
+          !document.webkitFullscreenElement &&
+          !document.mozFullScreenElement &&
+          !document.msFullscreenElement
+        ) {
+          restaurarIframe();
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
-
-
-

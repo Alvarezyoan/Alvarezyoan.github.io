@@ -1,72 +1,193 @@
+/* Fondo general */
 body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-h1, h3 {
-    margin: 10px 0;
-}
-
-h1 {
-    font-size: 36px;
-    color: #ec0505;
-}
-h3 {
-    font-size: 24px;
-    color: #1303fa;
-}
-
-a {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #031cfd;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #0400ff
-}
-
-body {
-    background-image: url('fondo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image: url('fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Fondo desenfocado */
 body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('fondo.jpg'); /* Reemplaza con tu imagen */
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: -2;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('fondo.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -2;
 }
 
-/* Capa semitransparente para atenuar */
+/* Capa semitransparente */
 body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6); /* Ajusta opacidad según lo que desees */
-    z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.897);
+  z-index: -1;
 }
+
+body {
+  overflow-x: hidden; /* Solo oculta el scroll horizontal */
+  overflow-y: auto;   /* Permite el scroll vertical */
+}
+
+
+/* Encabezados */
+h1 {
+  font-size: 60px;
+  color: #ffffff;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 24px;
+  color: green;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* Contenedor principal */
+.contenedor {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Sección Scratch */
+.scratch {
+  flex: 1;
+  max-width: 50%;
+}
+
+.scratch iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* Sección texto */
+.texto {
+  flex: 1;
+  max-width: 50%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Párrafos */
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* Lista */
+ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  list-style-type: disc;
+}
+
+ul li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+/* Enlace */
+a {
+  font-size: 30px ;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #1900ff;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedor {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .scratch,
+  .texto {
+    max-width: 100%;
+    flex: 1 1 100%;
+    padding: 0;
+  }
+
+  .texto {
+    padding: 20px 10px;
+  }
+}
+
+.scratch button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.scratch button:hover {
+  background-color: #005fa3;
+}
+
+/* Estilo para el iframe en modo pantalla completa */
+#scratch-container:fullscreen iframe {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Cuando el contenedor entra en pantalla completa */
+#scratch-container:fullscreen iframe,
+#scratch-container:-webkit-full-screen iframe,
+#scratch-container:-moz-full-screen iframe {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Tamaño normal del iframe */
+#scratch-iframe {
+  width: 485px;
+  height: 402px;
+  border: none;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Tamaño expandido en pantalla completa */
+.fullscreen-iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+
